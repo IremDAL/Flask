@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonuç</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>Sınav Sonucu</h1>
+        <p><strong>Skorunuz:</strong> <span class="score">{{ score }}%</span></p>
+        <p><strong>Kişisel Yüksek Skorunuz:</strong> {{ personal }}%</p>
+        <div class="scores">
+            <p><strong>Kişisel Yüksek Skor:</strong> {{ personal or 0 }}%</p>
+            <p><strong>Genel Yüksek Skor:</strong> {{ global_high or 0 }}%</p>
+        </div>
+        
+        <a href="/?name={{ name }}" class="retry-button">Yeniden Dene</a>
+
+        <footer>
+            <p>İrem tarafından geliştirildi. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>Quiz</h1>
+        <div class="scores">
+            <p><strong>Kişisel Yüksek Skor:</strong> {{ personal or 0 }}%</p>
+            <p><strong>Genel Yüksek Skor:</strong> {{ global_high or 0 }}%</p>
+        </div>
+        <form action="/submit" method="post">
+            <label for="username"><strong>Adınız:</strong></label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            {% for question in questions %}
+                <div class="question-block">
+                    <p><strong>{{ loop.index }}. {{ question.question }}</strong></p>
+                    <label><input type="radio" name="{{ question.id }}" value="option1" required> {{ question.option1 }}</label><br>
+                    <label><input type="radio" name="{{ question.id }}" value="option2"> {{ question.option2 }}</label><br>
+                    <label><input type="radio" name="{{ question.id }}" value="option3"> {{ question.option3 }}</label><br>
+                    <label><input type="radio" name="{{ question.id }}" value="option4"> {{ question.option4 }}</label><br>
+                </div>
+                <hr>
+            {% endfor %}
+
+            <button type="submit">Gönder</button>
+        </form>
+        <footer>
+            <p>İrem tarafından geliştirildi. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+</body>
+</html>
